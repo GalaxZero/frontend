@@ -4,12 +4,12 @@ import Image from "next/image";
 import Testimoni from "./Testimoni";
 // import ButtonPrimary from "./misc/ButtonPrimary";
 import ButtonOutline from "./misc/ButtonOutline";
-import Maps from "../public/assets/HugeGlobal.svg";
-import Netflix from "../public/assets/Icon/netflix.png";
-import Reddit from "../public/assets/Icon/reddit.png";
-import Discord from "../public/assets/Icon/discord.png";
-import Spotify from "../public/assets/Icon/spotify.png";
-import Amazon from "../public/assets/Icon/amazon.png";
+import Maps from "../public/assets/spiral3.png";
+import Netflix from "../public/assets/binan.png";
+import Reddit from "../public/assets/okx.png";
+import Discord from "../public/assets/coinbase2.png";
+import Spotify from "../public/assets/rabby2.png";
+import Amazon from "../public/assets/meta.png";
 import { motion } from "framer-motion";
 import getScrollAnimation from "../utils/getScrollAnimation";
 import ScrollAnimationWrapper from "./Layout/ScrollAnimationWrapper";
@@ -133,14 +133,14 @@ const Pricing: React.FC<PricingProps> = ({
               Advanced Tracking Across Your Portfolio
             </motion.h3>
             <motion.p
-              className="leading-normal mx-auto my-2 w-10/12 sm:w-7/12 lg:w-6/12"
+              className="leading-normal mx-auto my-0 w-10/12 sm:w-7/12 lg:w-6/12"
               variants={scrollAnimation}
             >
               Galax0's global integrations bring your entire portfolio to one dashboard for seamless management.
             </motion.p>
           </ScrollAnimationWrapper>
           <ScrollAnimationWrapper>
-            <motion.div className="py-12 w-full px-8 mt-16" variants={scrollAnimation}>
+            <motion.div className="py-12 w-full px-8 mt-0" variants={scrollAnimation}>
               <Image
                 src={Maps}
                 alt="Global Network Illustration"

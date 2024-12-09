@@ -1,15 +1,43 @@
-'use client';
+"use client";
 import React, { useState } from "react";
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import 'tailwindcss/tailwind.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "tailwindcss/tailwind.css";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 
 export default function Home() {
   const [transactions, setTransactions] = useState([
-    { id: "5001", asset: "BTC", action: "Buy", date: "2024-12-05", amount: "$12,000", status: "Completed" },
-    { id: "5002", asset: "ETH", action: "Stake", date: "2024-12-06", amount: "5 ETH", status: "In Progress" },
+    {
+      id: "5001",
+      asset: "BTC",
+      action: "Buy",
+      date: "2024-12-05",
+      amount: "$12,000",
+      status: "Completed",
+    },
+    {
+      id: "5002",
+      asset: "ETH",
+      action: "Stake",
+      date: "2024-12-06",
+      amount: "5 ETH",
+      status: "In Progress",
+    },
   ]);
-  const [wallets, setWallets] = useState(["Binance Wallet", "Photon Wallet", "Bitmex Wallet"]);
+  const [wallets, setWallets] = useState([
+    "Binance Wallet",
+    "Photon Wallet",
+    "Bitmex Wallet",
+  ]);
   const [newWallet, setNewWallet] = useState("");
 
   const handleAddWallet = () => {
@@ -19,11 +47,40 @@ export default function Home() {
     }
   };
 
+  const data = [
+    { name: "Jan", PNL: 100 },
+    { name: "Feb", PNL: 200 },
+    { name: "Mar", PNL: 150 },
+    { name: "Apr", PNL: 300 },
+    { name: "May", PNL: 250 },
+    { name: "Jun", PNL: 400 },
+    { name: "Jul", PNL: 350 },
+    { name: "Aug", PNL: 450 },
+    { name: "Sep", PNL: 400 },
+    { name: "Oct", PNL: 500 },
+    { name: "Nov", PNL: 450 },
+    { name: "Dec", PNL: 550 },
+  ];
+
   const loadMoreTransactions = () => {
     setTransactions([
       ...transactions,
-      { id: "5003", asset: "USDT", action: "Transfer", date: "2024-12-07", amount: "$1,000", status: "Completed" },
-      { id: "5004", asset: "SOL", action: "Swap", date: "2024-12-08", amount: "10 SOL", status: "Completed" },
+      {
+        id: "5003",
+        asset: "USDT",
+        action: "Transfer",
+        date: "2024-12-07",
+        amount: "$1,000",
+        status: "Completed",
+      },
+      {
+        id: "5004",
+        asset: "SOL",
+        action: "Swap",
+        date: "2024-12-08",
+        amount: "10 SOL",
+        status: "Completed",
+      },
     ]);
   };
 
@@ -31,35 +88,51 @@ export default function Home() {
     <div className="flex h-screen bg-[#171031] text-gray-200">
       {/* Sidebar */}
       <aside className="w-64 bg-[#171031] flex flex-col">
-        <div className="p-4 text-lg font-bold text-[#01F3F4]">Coin Portfolio</div>
+        <div className="p-4 text-lg font-bold text-[#01F3F4]">
+          Coin Portfolio
+        </div>
 
         <nav className="mt-4 space-y-2 px-4">
           <a
             href="/"
-            className="block py-2 px-4 bg-[#FE664F] text-white rounded hover:bg-[#d9434f]"
+            className="block py-2 px-4 text-white rounded hover:bg-[#FE664F]"
+          >
+            Logout
+          </a>
+          <a
+            href="/home"
+            className="block py-2 px-4 rounded hover:bg-[#FE664F]"
           >
             Home
           </a>
-          <a href="/home" className="block py-2 px-4 rounded hover:bg-[#FE664F]">
-            Total Portfolio Value
+          <a
+            href="/credit-score"
+            className="block py-2 px-4 rounded hover:bg-[#FE664F]"
+          >
+            Credit Score
           </a>
+
           <a href="#" className="block py-2 px-4 rounded hover:bg-[#FE664F]">
             Asset Allocation Chart
           </a>
-          <a href="#" className="block py-2 px-4 rounded hover:bg-[#FE664F]">
-            Recent Transactions
-          </a>
+
           <a href="#" className="block py-2 px-4 rounded hover:bg-[#FE664F]">
             Quick Actions
           </a>
-          <a href="/credit-score" className="block py-2 px-4 rounded hover:bg-[#FE664F]">
-            Credit Score
+          <a href="#" className="block py-2 px-4 hover:bg-gray-700">
+            Discover
+          </a>
+
+          <a href="#" className="block py-2 px-4 rounded hover:bg-[#FE664F]">
+            Docs
           </a>
         </nav>
 
         {/* Exchanges Section */}
         <div className="mt-8 px-4">
-          <h2 className="text-sm font-medium mb-2 text-[#01F3F4]">Your Exchanges</h2>
+          <h2 className="text-sm font-medium mb-2 text-[#01F3F4]">
+            Your Exchanges
+          </h2>
           <ul className="space-y-2">
             <li className="flex items-center space-x-2">
               <span className="w-6 h-6 rounded-full bg-yellow-500"></span>
@@ -78,7 +151,9 @@ export default function Home() {
 
         {/* Wallets Section */}
         <div className="mt-8 px-4">
-          <h2 className="text-sm font-medium mb-2 text-[#01F3F4]">Your Wallets</h2>
+          <h2 className="text-sm font-medium mb-2 text-[#01F3F4]">
+            Your Wallets
+          </h2>
           <ul className="space-y-2">
             {wallets.map((wallet, index) => (
               <li key={index} className="flex items-center space-x-2">
@@ -124,19 +199,27 @@ export default function Home() {
         {/* Performance Summary */}
         <div className="grid grid-cols-4 gap-4 mt-6">
           <div className="bg-[#171031] p-4 rounded text-center">
-            <h2 className="text-sm font-medium text-gray-400">Cryptocurrency Holdings</h2>
+            <h2 className="text-sm font-medium text-gray-400">
+              Cryptocurrency Holdings
+            </h2>
             <p className="text-lg font-bold text-white">$15,000</p>
           </div>
           <div className="bg-[#171031] p-4 rounded text-center">
-            <h2 className="text-sm font-medium text-gray-400">NFT Collections</h2>
+            <h2 className="text-sm font-medium text-gray-400">
+              NFT Collections
+            </h2>
             <p className="text-lg font-bold text-white">12 NFTs</p>
           </div>
           <div className="bg-[#171031] p-4 rounded text-center">
-            <h2 className="text-sm font-medium text-gray-400">DeFi Positions</h2>
+            <h2 className="text-sm font-medium text-gray-400">
+              DeFi Positions
+            </h2>
             <p className="text-lg font-bold text-white">Lending, Staking</p>
           </div>
           <div className="bg-[#171031] p-4 rounded text-center">
-            <h2 className="text-sm font-medium text-gray-400">Historical Performance</h2>
+            <h2 className="text-sm font-medium text-gray-400">
+              Historical Performance
+            </h2>
             <p className="text-lg font-bold text-green-400">+23.45%</p>
           </div>
         </div>
@@ -151,7 +234,10 @@ export default function Home() {
               </button>
               <div>
                 <div className="w-full bg-gray-700 rounded-full h-3 mb-1">
-                  <div className="bg-[#01F3F4] h-3 rounded-full" style={{ width: "65%" }}></div>
+                  <div
+                    className="bg-[#01F3F4] h-3 rounded-full"
+                    style={{ width: "65%" }}
+                  ></div>
                 </div>
                 <p className="text-xs text-gray-400">65%</p>
               </div>
@@ -160,7 +246,10 @@ export default function Home() {
               </button>
               <div>
                 <div className="w-full bg-gray-700 rounded-full h-3 mb-1">
-                  <div className="bg-green-400 h-3 rounded-full" style={{ width: "75%" }}></div>
+                  <div
+                    className="bg-green-400 h-3 rounded-full"
+                    style={{ width: "75%" }}
+                  ></div>
                 </div>
                 <p className="text-xs text-gray-400">75%</p>
               </div>
@@ -169,14 +258,50 @@ export default function Home() {
               </button>
               <div>
                 <div className="w-full bg-gray-700 rounded-full h-3 mb-1">
-                  <div className="bg-red-500 h-3 rounded-full" style={{ width: "40%" }}></div>
+                  <div
+                    className="bg-red-500 h-3 rounded-full"
+                    style={{ width: "40%" }}
+                  ></div>
                 </div>
                 <p className="text-xs text-gray-400">40%</p>
               </div>
             </div>
           </div>
           {/* Placeholder for a graph */}
-          <div className="h-48 bg-[#1e1f2b] rounded"></div>
+          <div className="h-48 bg-[#171031] rounded">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={data}>
+                <XAxis dataKey="name" stroke="#fff" />
+                <YAxis
+                  type="number"
+                  domain={["dataMin", "dataMax"]}
+                  stroke="#fff"
+                />
+                <CartesianGrid strokeDasharray="3 3" stroke="#434351" />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#1e1f2b",
+                    borderRadius: "10px",
+                    color: "#FFFFFF",
+                  }}
+                  labelStyle={{ color: "#FFFFFF" }}
+                />
+                <Legend />
+                <defs>
+                  <linearGradient id="colorUv" x1="0" y1="1" x2="0" y2="0">
+                    <stop offset="5%" stopColor="#0694A2" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="#0694A2" stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+                <Line
+                  type="monotone"
+                  dataKey="PNL"
+                  stroke="#0694A2"
+                  fill="url(#colorUv)"
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
         </div>
 
         {/* Transaction History */}
@@ -203,7 +328,9 @@ export default function Home() {
                   <td className="py-2">{tx.amount}</td>
                   <td
                     className={`py-2 ${
-                      tx.status === "Completed" ? "text-green-400" : "text-blue-400"
+                      tx.status === "Completed"
+                        ? "text-green-400"
+                        : "text-blue-400"
                     }`}
                   >
                     {tx.status}

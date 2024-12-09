@@ -11,25 +11,27 @@ const CreditScore: React.FC = () => {
         <nav className="mt-4 space-y-2">
           <a
             href="/"
-            className="block py-2 px-4 bg-[#FE664F] text-white rounded hover:bg-[#d9434f]"
+            className="block py-2 px-4  text-white rounded hover:bg-[#FE664F]"
           >
-            Home
+            Logout
           </a>
           <a href="/home" className="block py-2 px-4 hover:bg-gray-700">
-            Portfolio
-          </a>
-          <a href="#" className="block py-2 px-4 hover:bg-gray-700">
-            Discover
-          </a>
-          <a href="#" className="block py-2 px-4 hover:bg-gray-700">
-            Verification
-          </a>
-          <a href="#" className="block py-2 px-4 hover:bg-gray-700">
-            Docs
+            Home
           </a>
           <a href="/credit-score" className="block py-2 px-4 hover:bg-gray-700">
             Credit Score
           </a>
+          <a href="#" className="block py-2 px-4 rounded hover:bg-[#FE664F]">
+            Asset Allocation Chart
+          </a>
+          <a href="#" className="block py-2 px-4 hover:bg-gray-700">
+            Discover
+          </a>
+         
+          <a href="#" className="block py-2 px-4 hover:bg-gray-700">
+            Docs
+          </a>
+        
         </nav>
       </aside>
 
